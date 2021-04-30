@@ -56,15 +56,63 @@
 		FA1C5B5C263BB0450009D372 /* FetchWeather */ = {
 			isa = PBXGroup;
 			children = (
-				FA1C5B5D263BB0450009D372 /* AppDelegate.swift */,
-				FA1C5B5F263BB0450009D372 /* SceneDelegate.swift */,
-				FA1C5B61263BB0450009D372 /* ViewController.swift */,
-				FA1C5B63263BB0450009D372 /* Main.storyboard */,
-				FA1C5B66263BB0480009D372 /* Assets.xcassets */,
-				FA1C5B68263BB0480009D372 /* LaunchScreen.storyboard */,
-				FA1C5B6B263BB0480009D372 /* Info.plist */,
+				FA1C5B7A263BB0CF0009D372 /* NetworkController */,
+				FA1C5B79263BB0BD0009D372 /* Model */,
+				FA1C5B77263BB0B20009D372 /* Supporting */,
+				FA1C5B75263BB0A70009D372 /* ViewControllers */,
+				FA1C5B73263BB0900009D372 /* Storyboards */,
+				FA1C5B74263BB09B0009D372 /* Resources */,
 			);
 			path = FetchWeather;
+			sourceTree = "<group>";
+		};
+		FA1C5B73263BB0900009D372 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C5B63263BB0450009D372 /* Main.storyboard */,
+				FA1C5B68263BB0480009D372 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FA1C5B74263BB09B0009D372 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C5B66263BB0480009D372 /* Assets.xcassets */,
+				FA1C5B6B263BB0480009D372 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FA1C5B75263BB0A70009D372 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C5B61263BB0450009D372 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FA1C5B77263BB0B20009D372 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C5B5D263BB0450009D372 /* AppDelegate.swift */,
+				FA1C5B5F263BB0450009D372 /* SceneDelegate.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		FA1C5B79263BB0BD0009D372 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA1C5B7A263BB0CF0009D372 /* NetworkController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R242LK7DMS;
-				INFOPLIST_FILE = FetchWeather/Info.plist;
+				INFOPLIST_FILE = FetchWeather/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ArtemBazhanov.FetchWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,7 +355,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R242LK7DMS;
-				INFOPLIST_FILE = FetchWeather/Info.plist;
+				INFOPLIST_FILE = FetchWeather/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ArtemBazhanov.FetchWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
