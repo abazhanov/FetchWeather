@@ -21,7 +21,6 @@ class NetworkManager {
                 print("Create data error: ", error?.localizedDescription ?? "No error description")
                 return
             }
-        
             do {
                 let currentWeather = try JSONDecoder().decode(CurrentWeather.self, from: data)
                 completion(currentWeather)
@@ -44,7 +43,6 @@ class NetworkManager {
             }
         }.resume()
     }
-    
     
     private init() {}
 }

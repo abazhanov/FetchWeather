@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         
         weatherLabel.textAlignment = .center
         weatherLabel.text = "Для получения погоды введите координаты и нажмите кнопку \"Получить погоду\"."
-        
     }
     
     @IBAction func getWeatherPressed() {
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
             getWeather(longitude: lon, latitude: lat)
  
         } else {
-            print("Нет данных в textfield")
+            showAlert(with: "Вы не указали координаты", and: "Пожалуйста, укажите долготу и широту места, для которого хотите получить погоду")
         }
     }
     
@@ -75,9 +74,17 @@ class ViewController: UIViewController {
                     """
             }
         }
-        
-     
     }
     
 }
 
+extension ViewController {
+    private func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
+    }
+}
