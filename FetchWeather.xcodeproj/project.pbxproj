@@ -13,6 +13,10 @@
 		FA1C5B65263BB0450009D372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1C5B63263BB0450009D372 /* Main.storyboard */; };
 		FA1C5B67263BB0480009D372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1C5B66263BB0480009D372 /* Assets.xcassets */; };
 		FA1C5B6A263BB0480009D372 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1C5B68263BB0480009D372 /* LaunchScreen.storyboard */; };
+		FA1C5B7D263BB8100009D372 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B7C263BB8100009D372 /* NetworkManager.swift */; };
+		FA1C5B87263BBB940009D372 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B86263BBB940009D372 /* CurrentWeather.swift */; };
+		FA1C5B8A263BBBCB0009D372 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B89263BBBCB0009D372 /* Weather.swift */; };
+		FA1C5B8D263C098E0009D372 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B8C263C098E0009D372 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		FA1C5B66263BB0480009D372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA1C5B69263BB0480009D372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA1C5B6B263BB0480009D372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA1C5B7C263BB8100009D372 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = FetchWeather/NetworkController/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
+		FA1C5B86263BBB940009D372 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		FA1C5B89263BBBCB0009D372 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		FA1C5B8C263C098E0009D372 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,9 @@
 		FA1C5B79263BB0BD0009D372 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA1C5B86263BBB940009D372 /* CurrentWeather.swift */,
+				FA1C5B89263BBBCB0009D372 /* Weather.swift */,
+				FA1C5B8C263C098E0009D372 /* Main.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -111,6 +122,7 @@
 		FA1C5B7A263BB0CF0009D372 /* NetworkController */ = {
 			isa = PBXGroup;
 			children = (
+				FA1C5B7C263BB8100009D372 /* NetworkManager.swift */,
 			);
 			path = NetworkController;
 			sourceTree = "<group>";
@@ -185,8 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1C5B7D263BB8100009D372 /* NetworkManager.swift in Sources */,
+				FA1C5B87263BBB940009D372 /* CurrentWeather.swift in Sources */,
 				FA1C5B62263BB0450009D372 /* ViewController.swift in Sources */,
 				FA1C5B5E263BB0450009D372 /* AppDelegate.swift in Sources */,
+				FA1C5B8A263BBBCB0009D372 /* Weather.swift in Sources */,
+				FA1C5B8D263C098E0009D372 /* Main.swift in Sources */,
 				FA1C5B60263BB0450009D372 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
