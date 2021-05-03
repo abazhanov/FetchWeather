@@ -53,9 +53,9 @@ class ViewController: UIViewController {
     }
     
     private func getWeather(longitude: Double, latitude:Double) {
-        NetworkManager.shared.fetchData(longitude: longitude, latitude: latitude) { (weather) in
-            print(weather)
-            print("Температура:" + String(weather.main.temp))
+        let result = NetworkManager.shared.fetchData(longitude: longitude, latitude: latitude) { (weather) in
+            //print(weather)
+            //print("Температура:" + String(weather.main.temp))
             self.currentWeather = weather
             NetworkManager.shared.fetchIconWeather(partURL: weather.weather[0].icon) { (image) in
                 DispatchQueue.main.async {
@@ -73,6 +73,9 @@ class ViewController: UIViewController {
                     Температура: \(String(Int(weather.main.temp))) ºC
                     """
             }
+        }
+        if result != "" {
+            showAlert(with: result, and: "Упс...")
         }
     }
     
