@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NetworkManagerDelegate {
+    func showErrorAlert(with: String, and: String)
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var weatherLabel: UILabel!
@@ -54,6 +58,12 @@ class ViewController: UIViewController {
     
     private func getWeather(longitude: Double, latitude:Double) {
         let result = NetworkManager.shared.fetchData(longitude: longitude, latitude: latitude) { (weather) in
+            
+             
+            
+            
+            NetworkManager.shared.delegate = self
+            
             //print(weather)
             //print("Температура:" + String(weather.main.temp))
             self.currentWeather = weather
@@ -89,5 +99,11 @@ extension ViewController {
         alert.addAction(okAction)
         
         present(alert, animated: true)
+    }
+}
+
+extension ViewController: NetworkManagerDelegate {
+    func showErrorAlert(with: String, and: String) {
+        showAlert(with: with, and: and)
     }
 }

@@ -11,12 +11,17 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
+    var delegate: NetworkManagerDelegate?
+    
+    private init() {}
+    
     func fetchData(longitude: Double, latitude:Double, completion: @escaping(CurrentWeather)->()) -> String {
         var errorData = ""
         
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=a6c40d5ab6bb6b87ea73272d831fe569&units=metric&lang=ru"
+        let urlString = "https://api1.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=a6c40d5ab6bb6b87ea73272d831fe569&units=metric&lang=ru"
         guard let url=URL(string: urlString) else {
             errorData = "URL is wrong"
+            delegate?.showErrorAlert(with: "Ошибка!", and: errorData)
             return errorData
         }
         
@@ -24,6 +29,8 @@ class NetworkManager {
             guard let data = data else {
                 print("Create data error: ", error?.localizedDescription ?? "No error description")
                 errorData = error?.localizedDescription ?? "Что-то не то"
+                self.delegate?.showErrorAlert(with: "Ошибка!", and: errorData)
+                print("aaaa")
                 return
             }
             do {
@@ -50,5 +57,7 @@ class NetworkManager {
         }.resume()
     }
     
-    private init() {}
+    func fetchDataWithAF(longitude: Double, latitude:Double) {
+        
+    }
 }
