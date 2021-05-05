@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class NetworkManager {
     
@@ -18,7 +19,7 @@ class NetworkManager {
     func fetchData(longitude: Double, latitude:Double, completion: @escaping(CurrentWeather)->()) -> String {
         var errorData = ""
         
-        let urlString = "https://api1.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=a6c40d5ab6bb6b87ea73272d831fe569&units=metric&lang=ru"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=a6c40d5ab6bb6b87ea73272d831fe569&units=metric&lang=ru"
         guard let url=URL(string: urlString) else {
             errorData = "URL is wrong"
             delegate?.showErrorAlert(with: "Ошибка!", and: errorData)
@@ -57,7 +58,48 @@ class NetworkManager {
         }.resume()
     }
     
-    func fetchDataWithAF(longitude: Double, latitude:Double) {
+    func fetchDataWithAF(longitude: Double, latitude:Double,completion: @escaping(CurrentWeather)->()) -> String {
+        var errorData = ""
         
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&appid=a6c40d5ab6bb6b87ea73272d831fe569&units=metric&lang=ru"
+        AF.request(urlString)
+            .validate()
+            .responseJSON { (dataResponce) in
+            
+            switch dataResponce.result {
+            case .success(let value):
+                guard let currentWeatherData = value as? [String : Any] else { return }
+                
+                let weatherData = currentWeatherData["weather"] as? [Dictionary<String, Any>]
+                var weather = [Weather]()
+                weather.append(Weather(
+                    main: weatherData?[0]["main"] as? String ?? "",
+                    description: weatherData?[0]["description"] as? String ?? "",
+                    icon: weatherData?[0]["icon"] as? String ?? ""
+                ))
+                
+                let mainData = currentWeatherData["main"] as? [String : Any]
+                let main = Main(
+                    temp: mainData?["temp"] as? Float ?? 0,
+                    feels_like: mainData?["feels_like"] as? Float ?? 0,
+                    temp_min: mainData?["temp_min"] as? Float ?? 0,
+                    temp_max: mainData?["temp_max"] as? Float ?? 0,
+                    pressure: mainData?["pressure"] as? Int ?? 0,
+                    humidity: mainData?["humidity"] as? Float ?? 0
+                )
+                
+                let currentWeather = CurrentWeather(
+                    weather: weather,
+                    main: main,
+                    name: currentWeatherData["name"] as? String ?? ""
+                )
+                completion(currentWeather)
+              
+            case .failure(let error):
+                print("Error: ", error)
+                errorData = error.localizedDescription
+            }
+        }
+        return errorData
     }
 }

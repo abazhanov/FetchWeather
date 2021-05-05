@@ -45,6 +45,18 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func getWeatherPressedAF() {
+        if latitudeLabel.text != "" && longitudeLabel.text != "" {
+            guard let lon = Double(longitudeLabel.text ?? "44.005986") else { return }
+            guard let lat = Double(latitudeLabel.text ?? "56.326887") else {return }
+            
+            getWeatherAF(longitude: lon, latitude: lat)
+ 
+        } else {
+            showAlert(with: "Вы не указали координаты", and: "Пожалуйста, укажите долготу и широту места, для которого хотите получить погоду")
+        }
+    }
+    
     @IBAction func getCityCoordinatePressed(_ sender: UIButton) {
         switch sender.currentTitle {
         case "Нижний Новгород":
@@ -55,17 +67,40 @@ class ViewController: UIViewController {
             longitudeLabel.text = "55.958658"
         }
     }
-    
+        
     private func getWeather(longitude: Double, latitude:Double) {
         let result = NetworkManager.shared.fetchData(longitude: longitude, latitude: latitude) { (weather) in
             
-             
-            
+            NetworkManager.shared.delegate = self
+        
+            self.currentWeather = weather
+            NetworkManager.shared.fetchIconWeather(partURL: weather.weather[0].icon) { (image) in
+                DispatchQueue.main.async {
+                    self.iconWeatherImageView.image = image
+                }
+            }
+            DispatchQueue.main.async {
+                self.weatherLabel.textAlignment = .left
+                self.weatherLabel.text =
+                    """
+                    Ваш город: \(String(weather.name))
+
+                    За окном \(String(weather.weather[0].description))
+
+                    Температура: \(String(Int(weather.main.temp))) ºC
+                    """
+            }
+        }
+        if result != "" {
+            showAlert(with: result, and: "Упс...")
+        }
+    }
+    
+    private func getWeatherAF(longitude: Double, latitude:Double) {
+        let result = NetworkManager.shared.fetchDataWithAF(longitude: longitude, latitude: latitude) { (weather) in
             
             NetworkManager.shared.delegate = self
-            
-            //print(weather)
-            //print("Температура:" + String(weather.main.temp))
+        
             self.currentWeather = weather
             NetworkManager.shared.fetchIconWeather(partURL: weather.weather[0].icon) { (image) in
                 DispatchQueue.main.async {

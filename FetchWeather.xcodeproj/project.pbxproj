@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87F96A1DC7A11C7DBA45A704 /* Pods_FetchWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F946D1E8ED825D3AE54834F /* Pods_FetchWeather.framework */; };
 		FA1C5B5E263BB0450009D372 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B5D263BB0450009D372 /* AppDelegate.swift */; };
 		FA1C5B60263BB0450009D372 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B5F263BB0450009D372 /* SceneDelegate.swift */; };
 		FA1C5B62263BB0450009D372 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C5B61263BB0450009D372 /* ViewController.swift */; };
@@ -20,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D705DE4CBAA20C7854352DA /* Pods-FetchWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchWeather.debug.xcconfig"; path = "Target Support Files/Pods-FetchWeather/Pods-FetchWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		4F946D1E8ED825D3AE54834F /* Pods_FetchWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FetchWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED48A32E62996A8ADBECE219 /* Pods-FetchWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FetchWeather.release.xcconfig"; path = "Target Support Files/Pods-FetchWeather/Pods-FetchWeather.release.xcconfig"; sourceTree = "<group>"; };
 		FA1C5B5A263BB0450009D372 /* FetchWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1C5B5D263BB0450009D372 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1C5B5F263BB0450009D372 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,17 +43,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F96A1DC7A11C7DBA45A704 /* Pods_FetchWeather.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04AA3209AA59CCD58E2E02C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F946D1E8ED825D3AE54834F /* Pods_FetchWeather.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7157A5A2599D18B268A77301 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D705DE4CBAA20C7854352DA /* Pods-FetchWeather.debug.xcconfig */,
+				ED48A32E62996A8ADBECE219 /* Pods-FetchWeather.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA1C5B51263BB0450009D372 = {
 			isa = PBXGroup;
 			children = (
 				FA1C5B5C263BB0450009D372 /* FetchWeather */,
 				FA1C5B5B263BB0450009D372 /* Products */,
+				7157A5A2599D18B268A77301 /* Pods */,
+				04AA3209AA59CCD58E2E02C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA1C5B6E263BB0480009D372 /* Build configuration list for PBXNativeTarget "FetchWeather" */;
 			buildPhases = (
+				F0397267ADD356DE41D75DF0 /* [CP] Check Pods Manifest.lock */,
 				FA1C5B56263BB0450009D372 /* Sources */,
 				FA1C5B57263BB0450009D372 /* Frameworks */,
 				FA1C5B58263BB0450009D372 /* Resources */,
+				F6C71E07E9905083C267062E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +218,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F0397267ADD356DE41D75DF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FetchWeather-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6C71E07E9905083C267062E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchWeather/Pods-FetchWeather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FetchWeather/Pods-FetchWeather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FetchWeather/Pods-FetchWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA1C5B56263BB0450009D372 /* Sources */ = {
@@ -347,6 +416,7 @@
 		};
 		FA1C5B6F263BB0480009D372 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D705DE4CBAA20C7854352DA /* Pods-FetchWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -366,6 +436,7 @@
 		};
 		FA1C5B70263BB0480009D372 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED48A32E62996A8ADBECE219 /* Pods-FetchWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
